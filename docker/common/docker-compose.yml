@@ -1,0 +1,6 @@
+version: '2'
+services:
+  simpleservice:
+      image: fgroch/estimate-service:estimate-service
+      ports:
+        - "8080:8080"

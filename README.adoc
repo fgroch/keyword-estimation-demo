@@ -1,0 +1,21 @@
+= keyword-estimation-demo
+
+Keyword search estimation microservice demo project
+
+=== Technical requirements:
+* Java installed (1.8)
+* Maven installed
+* Docker installed
+
+=== Build and run (from root of the project):
+`> mvn clean package docker:build` +
+`> docker-compose -f docker/common/docker-compose.yml up`
+
+Open browser and type: +
+http://localhost:8080/estimate/{keyword} +
+or use favorite tool (curl, postman....).
+
+=== Assumptions and algorithm
+The algorithm works in two steps, in the first one calls api with a given keyword. Each of the 10 possible results has a weight of 5. For each of them (the second step) api is called and the number of results is divided by 2 (weight 0.5). The maximum number of results is 60, after adding the weights it gives 100 for the most searched words and 0 for never found. +
+The hint is correct because calling api for subsequent words returns a different number of results. +
+My program seems to be quite precise because the results look reliable while similar results give the api call for the keyword with subsequent letters of the alphabet
