@@ -21,7 +21,7 @@ public class EstimateController {
      * @return estimation data object, 404 HttpStatus if @param keyword is empty
      */
     @RequestMapping(value="/{keyword}",method = RequestMethod.GET)
-    public EstimationDto hello(@PathVariable("keyword") String keyword) {
+    public EstimationDto estimate(@PathVariable("keyword") String keyword) {
         return estimateService.getCompletionSuggestion(keyword);
     }
 }
